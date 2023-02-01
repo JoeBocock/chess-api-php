@@ -1,0 +1,25 @@
+name: Pull Request
+
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
+      - name: Build Continer
+        run: make build
+
+      - name: Install Dependencies
+        run: make install
+
+      - name: Run Tests
+        run: make test
+
+      - name: Run Linter
+        run: make lint
+
+      - name: Run Static Analysis
+        run: make stan
