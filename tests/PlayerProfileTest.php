@@ -6,7 +6,7 @@ use GuzzleHttp\Psr7\Response;
 use JoeBocock\ChessApi\ChessApi;
 use JoeBocock\ChessApi\Entities\PlayerProfile;
 
-it('fetches a player profile', function () {
+it('fetches a players profile', function () {
     $api = new ChessApi(mockClient([
         new Response(body: file_get_contents('./tests/fixtures/PlayerProfileResponse.json', true)),
     ]));

@@ -1,4 +1,4 @@
-command = @docker run -it --rm --entrypoint $(1) -v `pwd`:/app app $(2)
+command = @docker run -i --rm --entrypoint $(1) -v `pwd`:/app app $(2)
 
 .PHONY: build
 build:
