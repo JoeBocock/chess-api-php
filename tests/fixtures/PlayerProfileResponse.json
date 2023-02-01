@@ -1,0 +1,19 @@
+{
+    "avatar": "some-link",
+    "player_id": 33945736,
+    "@id": "some-link",
+    "url": "some-link",
+    "name": "Some Person",
+    "username": "username",
+    "title": "IM",
+    "followers": 9999,
+    "country": "some-link",
+    "location": "New York City",
+    "last_online": 1675178504,
+    "joined": 1489454915,
+    "status": "premium",
+    "is_streamer": true,
+    "twitch_url": "some-link",
+    "verified": false,
+    "league": "Elite"
+}
