@@ -10,7 +10,7 @@ install:
 
 .PHONY: test
 test:
-	$(call command, /app/vendor/bin/pest)
+	$(call command, /app/vendor/bin/pest, --parallel --coverage --min=90)
 
 .PHONY: stan
 stan:

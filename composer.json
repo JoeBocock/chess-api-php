@@ -24,7 +24,8 @@
     "require-dev": {
         "phpstan/phpstan": "^1.9",
         "pestphp/pest": "^1.22",
-        "friendsofphp/php-cs-fixer": "^3.14"
+        "friendsofphp/php-cs-fixer": "^3.14",
+        "pestphp/pest-plugin-parallel": "^1.2"
     },
     "config": {
         "allow-plugins": {
