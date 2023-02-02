@@ -10,11 +10,11 @@ install:
 
 .PHONY: test
 test:
-	$(call command, /app/vendor/bin/pest)
+	$(call command, /app/vendor/bin/pest, --parallel --coverage --min=90)
 
 .PHONY: stan
 stan:
-	$(call command, /app/vendor/bin/phpstan, analyse src --level 8)
+	$(call command, /app/vendor/bin/phpstan, analyse src --level 8 --xdebug)
 
 .PHONY: format
 format:
@@ -23,7 +23,3 @@ format:
 .PHONY: lint
 lint:
 	$(call command, /app/vendor/bin/php-cs-fixer, fix --dry-run)
-
-.PHONY: bash
-bash:
-	$(call command, /bin/bash)

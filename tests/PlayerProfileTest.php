@@ -3,14 +3,14 @@
 declare(strict_types=1);
 
 use GuzzleHttp\Psr7\Response;
-use JoeBocock\ChessApi\ChessApi;
+use JoeBocock\ChessApi\Chess;
 use JoeBocock\ChessApi\Entities\PlayerProfile;
 
 it('fetches a players profile', function () {
-    $api = new ChessApi(mockClient([
+    $chess = new Chess(mockClient([
         new Response(body: file_get_contents('./tests/fixtures/PlayerProfileResponse.json', true)),
     ]));
 
-    expect($api->playerProfile('joesyntax'))
+    expect($chess->playerProfile('joesyntax'))
         ->toBeInstanceOf(PlayerProfile::class);
 });
