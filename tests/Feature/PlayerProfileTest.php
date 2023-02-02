@@ -11,6 +11,6 @@ it('fetches a players profile', function () {
         new Response(body: file_get_contents('./tests/fixtures/PlayerProfileResponse.json', true)),
     ]));
 
-    expect($chess->playerProfile('joesyntax'))
+    expect($chess->playerProfile('username'))
         ->toBeInstanceOf(PlayerProfile::class);
 });
