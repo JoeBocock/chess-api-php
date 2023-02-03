@@ -4,12 +4,17 @@ declare(strict_types=1);
 
 use GuzzleHttp\Psr7\Response;
 use JoeBocock\ChessApi\Entities\PlayerProfile;
+use Tests\Factories\PlayerProfileFactory;
 
 it('fetches a players profile', function () {
+    $playerProfile = (new PlayerProfileFactory())->make();
+
     $chess = mockClient([
-        new Response(body: file_get_contents('./tests/Fixtures/PlayerProfileResponse.json', true)),
+        new Response(body: json_encode($playerProfile->toArray())),
     ]);
 
-    expect($chess->playerProfile('username'))
+    expect($response = $chess->playerProfile('username'))
         ->toBeInstanceOf(PlayerProfile::class);
+
+    expect($response)->toEqual($playerProfile);
 });

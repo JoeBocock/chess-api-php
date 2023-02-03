@@ -10,6 +10,7 @@ use JoeBocock\ChessApi\Exceptions\ChessRequestException;
 use JoeBocock\ChessApi\Exceptions\ChessResponseException;
 use JoeBocock\ChessApi\Requests\PlayerProfileRequest;
 use JoeBocock\ChessApi\Requests\Request;
+use JoeBocock\ChessApi\Requests\TitledPlayersRequest;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Client\NetworkExceptionInterface;
@@ -45,6 +46,20 @@ class Chess
     {
         return $this->send(
             (new PlayerProfileRequest())->setUsername($username)
+        );
+    }
+
+    /**
+     * @return array<int, string>|null
+     */
+    public function titledPlayers(string $title): array|null
+    {
+        if (! in_array($title, ['GM', 'WGM', 'IM', 'WIM', 'FM', 'WFM', 'NM', 'WNM', 'CM', 'WCM'])) {
+            throw new \InvalidArgumentException('Invalid player title');
+        }
+
+        return $this->send(
+            (new TitledPlayersRequest())->setTitle($title)
         );
     }
 }

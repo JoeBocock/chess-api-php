@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace JoeBocock\ChessApi\Requests;
 
-use GuzzleHttp\Psr7\Uri;
 use JoeBocock\ChessApi\Entities\PlayerProfile;
-use Psr\Http\Message\UriInterface;
 
 class PlayerProfileRequest extends Request
 {
@@ -24,11 +22,11 @@ class PlayerProfileRequest extends Request
         return $this;
     }
 
-    public function getUri(): UriInterface
+    public function getRequestParameters(): array
     {
-        return new Uri($this->requestUrl([
+        return [
             'username' => $this->username,
-        ]));
+        ];
     }
 
     public function hydrate(array $body, ?array $headers = null): PlayerProfile

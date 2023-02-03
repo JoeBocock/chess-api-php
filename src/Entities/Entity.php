@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace JoeBocock\ChessApi\Entities;
 
-interface Entity
+use JoeBocock\ChessApi\Interfaces\Arrayable;
+
+abstract class Entity implements Arrayable
 {
     // ...
 }

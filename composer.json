@@ -30,7 +30,8 @@
         "phpstan/phpstan": "^1.9",
         "pestphp/pest": "^1.22",
         "friendsofphp/php-cs-fixer": "^3.14",
-        "pestphp/pest-plugin-parallel": "^1.2"
+        "pestphp/pest-plugin-parallel": "^1.2",
+        "pestphp/pest-plugin-faker": "^1.0"
     },
     "config": {
         "allow-plugins": {
