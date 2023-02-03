@@ -38,6 +38,9 @@ abstract class Request extends Psr7Request
         ));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getRequestParameters(): array
     {
         return [];

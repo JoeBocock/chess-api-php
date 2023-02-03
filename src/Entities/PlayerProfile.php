@@ -27,6 +27,9 @@ class PlayerProfile extends Entity
     ) {
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(): array
     {
         return [
