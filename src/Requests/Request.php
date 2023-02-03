@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace JoeBocock\ChessApi\Requests;
 
 use GuzzleHttp\Psr7\Request as Psr7Request;
+use GuzzleHttp\Psr7\Uri;
 use JoeBocock\ChessApi\Enums\RequestMethod;
+use Psr\Http\Message\UriInterface;
 
 abstract class Request extends Psr7Request
 {
@@ -27,6 +29,18 @@ abstract class Request extends Psr7Request
     public function __construct()
     {
         parent::__construct(static::METHOD->value, static::BASE_URI . static::URI);
+    }
+
+    public function getUri(): UriInterface
+    {
+        return new Uri($this->requestUrl(
+            $this->getRequestParameters()
+        ));
+    }
+
+    public function getRequestParameters(): array
+    {
+        return [];
     }
 
     /**
