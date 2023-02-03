@@ -8,6 +8,11 @@
             "JoeBocock\\ChessApi\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
+        }
+    },
     "authors": [
         {
             "name": "Joe Bocock",

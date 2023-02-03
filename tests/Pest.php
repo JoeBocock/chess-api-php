@@ -5,6 +5,7 @@ declare(strict_types=1);
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
+use JoeBocock\ChessApi\Chess;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,9 +46,9 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function mockClient(array $responseQueue): Client
+function mockClient(array $responseQueue): Chess
 {
-    return new Client(['handler' => HandlerStack::create(
+    return new Chess(new Client(['handler' => HandlerStack::create(
         new MockHandler($responseQueue)
-    )]);
+    )]));
 }
