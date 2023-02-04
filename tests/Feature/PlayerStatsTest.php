@@ -9,8 +9,8 @@ use Tests\Factories\PlayerStatsFactory;
 
 it('fetches players by string or player profile', function () {
     /** @var PlayerProfile */
-    $playerProfile = (new PlayerProfileFactory())->make();
-    $playerStats = (new PlayerStatsFactory())->make();
+    $playerProfile = make(PlayerProfileFactory::class);
+    $playerStats = make(PlayerStatsFactory::class);
 
     $chess = mockClient([
         new Response(body: json_encode($playerStats->toArray())),

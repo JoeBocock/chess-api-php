@@ -7,7 +7,7 @@ use JoeBocock\ChessApi\Entities\PlayerProfile;
 use Tests\Factories\PlayerProfileFactory;
 
 it('fetches a players profile', function () {
-    $playerProfile = (new PlayerProfileFactory())->make();
+    $playerProfile = make(PlayerProfileFactory::class);
 
     $chess = mockClient([
         new Response(body: json_encode($playerProfile->toArray())),

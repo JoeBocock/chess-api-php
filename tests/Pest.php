@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use JoeBocock\ChessApi\Chess;
+use JoeBocock\ChessApi\Entities\Entity;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,4 +52,15 @@ function mockClient(array $responseQueue): Chess
     return new Chess(new Client(['handler' => HandlerStack::create(
         new MockHandler($responseQueue)
     )]));
+}
+
+function make(string ...$factories): array|Entity
+{
+    $entities = [];
+
+    foreach ($factories as $factory) {
+        $entities[] = (new $factory())->make();
+    }
+
+    return count($entities) > 1 ? $entities : array_pop($entities);
 }
