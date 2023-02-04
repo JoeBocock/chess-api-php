@@ -34,12 +34,14 @@ class Chess extends Client
      */
     public function titledPlayers(PlayerTitle|string $title): array|null
     {
-        if (! in_array($title, array_column(PlayerTitle::cases(), 'value'))) {
-            throw new \InvalidArgumentException('Invalid player title');
+        if (is_string($title)) {
+            if (! $title = PlayerTitle::tryFrom($title)) {
+                throw new \InvalidArgumentException('Invalid player title');
+            }
         }
 
         return $this->send(
-            (new TitledPlayersRequest())->setTitle($title)
+            (new TitledPlayersRequest())->setTitle($title->value)
         );
     }
 }
