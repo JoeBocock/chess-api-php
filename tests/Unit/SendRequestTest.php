@@ -18,8 +18,16 @@ it('handles psr client exceptions', function () {
 
 it('handles non-200 response', function () {
     $chess = mockClient([
-        new Response(404),
+        new Response(500),
     ]);
 
     $chess->send(new MockRequest());
 })->throws(ChessResponseException::class);
+
+it('handles 404s and returns null', function () {
+    $chess = mockClient([
+        new Response(404),
+    ]);
+
+    expect($chess->send(new MockRequest()))->toBeNull();
+});
