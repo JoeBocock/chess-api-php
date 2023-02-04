@@ -4,44 +4,20 @@ declare(strict_types=1);
 
 namespace JoeBocock\ChessApi;
 
-use GuzzleHttp\Client;
 use JoeBocock\ChessApi\Entities\PlayerProfile;
-use JoeBocock\ChessApi\Exceptions\ChessRequestException;
-use JoeBocock\ChessApi\Exceptions\ChessResponseException;
+use JoeBocock\ChessApi\Enums\PlayerTitle;
 use JoeBocock\ChessApi\Requests\PlayerProfileRequest;
-use JoeBocock\ChessApi\Requests\Request;
 use JoeBocock\ChessApi\Requests\TitledPlayersRequest;
-use Psr\Http\Client\ClientExceptionInterface;
-use Psr\Http\Client\ClientInterface;
-use Psr\Http\Client\NetworkExceptionInterface;
-use Psr\Http\Client\RequestExceptionInterface;
 
-class Chess
+class Chess extends Client
 {
-    public function __construct(private ClientInterface $client = new Client())
-    {
-    }
-
-    public function send(Request $request): mixed
-    {
-        try {
-            $response = $this->client->sendRequest($request);
-        } catch (ClientExceptionInterface|RequestExceptionInterface|NetworkExceptionInterface $e) {
-            throw new ChessRequestException($e->getMessage(), $e->getCode(), $e);
-        }
-
-        $code = $response->getStatusCode();
-
-        if ($code < 200 || $code >= 300) {
-            throw new ChessResponseException("Chess.com responded with a non-200 ({$code}) status code.", $code);
-        }
-
-        return $request->hydrate(
-            json_decode($response->getBody()->getContents(), true) ?? [],
-            $response->getHeaders()
-        );
-    }
-
+    /**
+     * Fetch a players profile.
+     *
+     * @param string $username The username of the player
+     *
+     * @return PlayerProfile|null Will return null if no player is found
+     */
     public function playerProfile(string $username): PlayerProfile|null
     {
         return $this->send(
@@ -50,11 +26,15 @@ class Chess
     }
 
     /**
+     * Fetch an array of player usernames by title.
+     *
+     * @param PlayerTitle|string $title Must be one of PlayerTitle::cases()
+     *
      * @return array<int, string>|null
      */
-    public function titledPlayers(string $title): array|null
+    public function titledPlayers(PlayerTitle|string $title): array|null
     {
-        if (! in_array($title, ['GM', 'WGM', 'IM', 'WIM', 'FM', 'WFM', 'NM', 'WNM', 'CM', 'WCM'])) {
+        if (! in_array($title, array_column(PlayerTitle::cases(), 'value'))) {
             throw new \InvalidArgumentException('Invalid player title');
         }
 
