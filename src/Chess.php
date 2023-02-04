@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace JoeBocock\ChessApi;
 
+use JoeBocock\ChessApi\Entities\CountryProfile;
 use JoeBocock\ChessApi\Entities\PlayerProfile;
 use JoeBocock\ChessApi\Entities\PlayerStats;
 use JoeBocock\ChessApi\Enums\PlayerTitle;
+use JoeBocock\ChessApi\Requests\CountryProfileRequest;
 use JoeBocock\ChessApi\Requests\PlayerProfileRequest;
 use JoeBocock\ChessApi\Requests\PlayerStatsRequest;
 use JoeBocock\ChessApi\Requests\TitledPlayersRequest;
@@ -62,6 +64,18 @@ class Chess extends Client
 
         return $this->send(
             (new PlayerStatsRequest())->setUsername($username)
+        );
+    }
+
+    /**
+     * Fetch details about a specific country.
+     *
+     * @param string $country a two character ISO 3166 code
+     */
+    public function countryProfile(string $country): CountryProfile|null
+    {
+        return $this->send(
+            (new CountryProfileRequest())->setCountry(strtoupper($country))
         );
     }
 }
