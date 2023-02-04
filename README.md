@@ -28,7 +28,7 @@
 
 ## Introduction
 
-This (un-released) PHP Composer package provides a simple SDK to interact with Chess.com's "Published Data" API. This provides all public data that Chess.com makes available without authenticating with their service. This includes but is not limited to...
+This PHP Composer package provides a simple SDK to interact with Chess.com's "Published Data" API. This provides all public data that Chess.com makes available without authenticating with their service. This includes but is not limited to...
 
 - Player Profiles
 - Player Statistics
@@ -46,7 +46,7 @@ This package can be used out-of-box with **zero** configuration. However, you ma
 
 ## Usage
 
-This package is not yet complete, but I am actively working on it. Once I get to a point that a decent portion of endpoints are implemented, I will release the package on Composer.
+This package is not yet complete, but I am actively working on it. I'm slowly working my way through the various endpoints.
 
 General usage is simple and you can be up and running in no time.
 
@@ -110,7 +110,7 @@ $response = $client->send($request);
 
 <br />
 
-While we'd hope nothing goes wrong during usage, sometimes Chess.com might return a 404, 429 or even 5XX. In this case, our `Chess` class throws three different exceptions to help discern the problem.
+While we'd hope nothing goes wrong during usage, sometimes Chess.com might return a 4XX or even 5XX. In this case, our `Chess` class throws three different exceptions to help discern the problem.
 
 Invalid arguments will produce an `InvalidArgumentException` as expected. A `ChessRequestException` will occur whenever there was an issue produced by the HTTP Client. Finally, a `ChessResponseException` will happen whenever a response was returned that cannot be properly hydrated into an entity.
 
