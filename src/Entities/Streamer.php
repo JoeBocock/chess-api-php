@@ -9,7 +9,7 @@ class Streamer extends Entity
     public function __construct(
         public string $username,
         public string $avatar,
-        public string $twitchUrl,
+        public ?string $twitchUrl,
         public string $url,
         public bool $isLive,
         public bool $isCommunityStreamer,

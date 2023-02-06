@@ -13,7 +13,7 @@ class StreamerFactory extends Factory
         return new Streamer(
             $this->faker->userName,
             $this->faker->url,
-            $this->faker->url,
+            $this->faker->randomElement([$this->faker->url, null]),
             $this->faker->url,
             $this->faker->boolean,
             $this->faker->boolean
