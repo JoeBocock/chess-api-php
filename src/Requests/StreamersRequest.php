@@ -22,11 +22,11 @@ class StreamersRequest extends Request
     {
         $streamers = [];
 
-        foreach ($body as $streamer) {
+        foreach ($body['streamers'] as $streamer) {
             $streamers[] = new Streamer(
                 $streamer['username'],
                 $streamer['avatar'],
-                $streamer['twitch_url'],
+                $streamer['twitch_url'] ?? null,
                 $streamer['url'],
                 $streamer['is_live'],
                 $streamer['is_community_streamer'],
