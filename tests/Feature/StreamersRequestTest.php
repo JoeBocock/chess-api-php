@@ -17,7 +17,7 @@ it('fetches a list of streamers', function () {
     $responseData = [];
 
     foreach ($streamers as $streamer) {
-        $responseData[] = $streamer->toArray();
+        $responseData['streamers'][] = $streamer->toArray();
     }
 
     $chess = mockClient([
