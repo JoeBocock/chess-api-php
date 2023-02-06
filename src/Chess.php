@@ -11,6 +11,7 @@ use JoeBocock\ChessApi\Enums\PlayerTitle;
 use JoeBocock\ChessApi\Requests\CountryProfileRequest;
 use JoeBocock\ChessApi\Requests\PlayerProfileRequest;
 use JoeBocock\ChessApi\Requests\PlayerStatsRequest;
+use JoeBocock\ChessApi\Requests\StreamersRequest;
 use JoeBocock\ChessApi\Requests\TitledPlayersRequest;
 
 class Chess extends Client
@@ -77,5 +78,15 @@ class Chess extends Client
         return $this->send(
             (new CountryProfileRequest())->setCountry(strtoupper($country))
         );
+    }
+
+    /**
+     * Fetch a list of Chess.com streamers.
+     *
+     * @return array<int, \JoeBocock\ChessApi\Entities\Streamer>|null
+     */
+    public function streamers(): array|null
+    {
+        return $this->send(new StreamersRequest());
     }
 }
