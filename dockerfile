@@ -1,6 +1,6 @@
 FROM php:8.1-cli-alpine
 
-ENV XDEBUG_MODE=coverage
+ENV XDEBUG_MODE=off
 
 RUN apk add --no-cache --update bash \
     && apk add --no-cache --update linux-headers \
