@@ -28,15 +28,14 @@
 
 ## Introduction
 
-This PHP Composer package provides a simple SDK to interact with Chess.com's "Published Data" API. This provides all public data that Chess.com makes available without authenticating with their service. This includes but is not limited to...
+This PHP Composer package provides a simple SDK to interact with Chess.com's "Published Data" API. Their API provides all public data that Chess.com makes available without authenticating with their service. As this package is a work in progress, not all endpoints are implemented yet but eventually this will encompass...
 
-- Player Profiles
-- Player Statistics
-- Player Online Status
-- Game Statistics
+- Player Data
 - Clubs
 - Tournaments
+- Team Matches
 - Countries
+- Daily Puzzles
 - Streamers
 - Leaderboards
 
@@ -46,7 +45,15 @@ This package can be used out-of-box with **zero** configuration. However, you ma
 
 ## Usage
 
-This package is not yet complete, but I am actively working on it. I'm slowly working my way through the various endpoints.
+This package is not yet complete, but I am actively working on it. I'm slowly working my way through the various endpoints. To get started, install the package with Composer.
+
+<br />
+
+```php
+composer require joebocock/chess-api-php
+```
+
+<br />
 
 General usage is simple and you can be up and running in no time.
 
