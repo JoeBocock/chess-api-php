@@ -1,4 +1,4 @@
-command = @docker run -t --rm --entrypoint $(1) -v `pwd`:/app app $(2)
+command = @docker run $(3) -t --rm --entrypoint $(1) -v `pwd`:/app app $(2)
 
 .PHONY: build
 build:
@@ -10,11 +10,11 @@ install:
 
 .PHONY: test
 test:
-	$(call command, /app/vendor/bin/pest, --parallel --coverage --min=90)
+	$(call command, /app/vendor/bin/pest, --parallel --coverage --min=100, -e XDEBUG_MODE='coverage')
 
 .PHONY: stan
 stan:
-	$(call command, /app/vendor/bin/phpstan, analyse src --level 8 --xdebug)
+	$(call command, /app/vendor/bin/phpstan, analyse src --level 8)
 
 .PHONY: format
 format:
