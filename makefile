@@ -1,10 +1,4 @@
-mode = -t
-
-ifndef ($(CI))
-	mode = -it
-endif
-
-command = @docker run $(3) $(mode) --rm --entrypoint $(1) -v `pwd`:/app app $(2)
+command = @docker run $(3) -t --rm --entrypoint $(1) -v `pwd`:/app app $(2)
 
 .PHONY: build
 build:
