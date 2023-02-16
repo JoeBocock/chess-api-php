@@ -49,7 +49,7 @@ This package is not yet complete, but I am actively working on it. I'm slowly wo
 
 <br />
 
-```php
+```shell
 composer require joebocock/chess-api-php
 ```
 
@@ -65,7 +65,7 @@ use JoeBocock\ChessApi\Chess;
 
 $client = new Chess();
 
-/** @var JoeBocock\Entities\PlayerProfile */
+/** @var JoeBocock\ChessApi\Entities\PlayerProfile */
 $playerProfile = $client->playerProfile('gothamchess');
 
 echo $playerProfile->name;
